@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Icon Set ? Unicons Solid</title>
+  <meta name="description" content="Primary icon set using Unicons solid at 18?20px, consistent weight, no outline variants." />
+  <link rel="preconnect" href="https://unicons.iconscout.com" crossorigin>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Primary Icons ? Unicons Solid</h1>
+    <div class="controls" role="group" aria-label="Icon size selector">
+      <button id="size18" class="btn" data-size="18" aria-pressed="false">18 px</button>
+      <button id="size20" class="btn active" data-size="20" aria-pressed="true">20 px</button>
+    </div>
+  </header>
+
+  <main class="container" aria-live="polite">
+    <section class="icons-grid" id="iconsGrid">
+      <article class="icon-card" data-name="bolt">
+        <i class="uis uis-bolt" aria-hidden="true"></i>
+        <div class="label">bolt ? CTA</div>
+      </article>
+      <article class="icon-card" data-name="book-open">
+        <i class="uis uis-book-open" aria-hidden="true"></i>
+        <div class="label">book-open ? Read/Write</div>
+      </article>
+      <article class="icon-card" data-name="headphones">
+        <i class="uis uis-headphones" aria-hidden="true"></i>
+        <div class="label">headphones ? Aural</div>
+      </article>
+      <article class="icon-card" data-name="pen">
+        <i class="uis uis-pen" aria-hidden="true"></i>
+        <div class="label">pen ? Write/quiz</div>
+      </article>
+      <article class="icon-card" data-name="cube">
+        <i class="uis uis-cube" aria-hidden="true"></i>
+        <div class="label">cube ? Visual asset</div>
+      </article>
+      <article class="icon-card" data-name="award">
+        <i class="uis uis-award" aria-hidden="true"></i>
+        <div class="label">award ? badge</div>
+      </article>
+      <article class="icon-card" data-name="brain">
+        <i class="uis uis-brain" aria-hidden="true"></i>
+        <div class="label">brain ? AI</div>
+      </article>
+      <article class="icon-card" data-name="hourglass">
+        <i class="uis uis-hourglass" aria-hidden="true"></i>
+        <div class="label">hourglass ? Dojo timer</div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>All icons are Unicons Solid. No outline variants used.</p>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const btn18 = document.getElementById('size18');
+      const btn20 = document.getElementById('size20');
+      function setSize(px) {
+        root.style.setProperty('--icon-size', px + 'px');
+        [btn18, btn20].forEach(btn => {
+          const isActive = btn.dataset.size === String(px);
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', String(isActive));
+        });
+      }
+      btn18.addEventListener('click', () => setSize(18));
+      btn20.addEventListener('click', () => setSize(20));
+      // initialize
+      setSize(20);
+    })();
+  </script>
+</body>
+</html>

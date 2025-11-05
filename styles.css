@@ -1,0 +1,121 @@
+:root {
+  --bg: #0b0d10;
+  --panel: #11151a;
+  --text: #e8eef4;
+  --muted: #9fb2c3;
+  --accent: #5dd8ff;
+  --icon-size: 20px; /* default, toggled by JS to 18px */
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 10% -10%, #0f1320 0%, var(--bg) 60%) fixed;
+}
+
+.site-header, .site-footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.site-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.controls { display: inline-flex; gap: 8px; }
+.btn {
+  appearance: none;
+  border: 1px solid #263443;
+  background: #141a21;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.05s ease;
+}
+.btn:hover { border-color: #385068; }
+.btn.active { background: #1a2330; border-color: #4b6b89; color: #eaf6ff; }
+.btn:active { transform: translateY(1px); }
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(140px, 1fr) );
+  gap: 14px;
+}
+
+.icon-card {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+  border: 1px solid rgba(121, 140, 160, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 8px 24px rgba(0,0,0,0.25);
+}
+
+/* Ensure consistent icon rendering at small sizes */
+.icon-card i.uis {
+  font-size: var(--icon-size);
+  line-height: 1;
+  color: #eaf6ff; /* slightly brighter for legibility */
+  filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+}
+
+/* Optional "emphasis" color accent for CTA icon */
+.icon-card[data-name="bolt"] i.uis {
+  color: var(--accent);
+}
+
+.icon-card .label {
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.site-footer {
+  opacity: 0.85;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid rgba(121, 140, 160, 0.18);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --text: #0b0f14;
+    --muted: #3f5566;
+    --accent: #0078d4;
+  }
+  body { background: radial-gradient(1200px 800px at 10% -10%, #ffffff 0%, #f1f4f8 60%) fixed; }
+  .btn { background: #f6f8fb; border-color: #dbe5ee; color: #0b0f14; }
+  .btn.active { background: #eef5ff; border-color: #bcd6f2; color: #0b0f14; }
+  .icon-card { background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.55)); border-color: #dbe5ee; }
+  .icon-card i.uis { color: #0b0f14; }
+  .icon-card[data-name="bolt"] i.uis { color: var(--accent); }
+  .site-footer { color: #5b6f80; border-top-color: #dbe5ee; }
+}
